@@ -27,8 +27,5 @@ A modern, responsive web application for conducting personality assessments for 
 - HTML5
 - CSS3
 - JavaScript
-- [Add any additional frameworks/libraries used]
 
 ## Getting Started 🚀
-
-1. Clone the repository
