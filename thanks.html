@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <h1 class="nav-title">SVU Personality Assessment Test</h1>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="container">
+            <h1 class="section-title">Thanks for giving the Test!</h1>
+
+            <p class="course-question">
+                Would you like to join a 8 session certified course based on Science and Spirituality specially meant for the Students from Top Colleges? (It will be conducted at your convenient time). <span class="required">*</span>
+            </p>
+
+            <img src="assets/DYS 2021 Poster.jpeg" alt="Discover yourself - An Eight-session journey" class="discover-image" width="500px">
+
+            <div class="select-container">
+                <select name="join_course">
+                    <option value="">Select your response</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="maybe">Maybe</option>
+                </select>
+            </div>
+
+            <div class="feedback-container">
+                <p class="feedback-title">Feedback: Any Comments / Questions / Suggestions?</p>
+                <textarea name="feedback" placeholder="Enter your feedback here..."></textarea>
+            </div>
+
+            <div class="navigation-buttons">
+                <button type="button" class="nav-btn back-btn" onclick="history.back()">Back</button>
+                <button type="submit" class="nav-btn">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function displayScores() {
+            const mcqScore = parseInt(sessionStorage.getItem('mcqScore') || 0);
+            const personalityScore = parseInt(sessionStorage.getItem('personalityScore') || 0);
+            const interestScore = parseInt(sessionStorage.getItem('interestScore') || 0);
+
+            document.getElementById('mcqScore').textContent = `${mcqScore}/50`;
+            document.getElementById('personalityScore').textContent = `${personalityScore}/50`;
+            document.getElementById('interestScore').textContent = `${interestScore}/50`;
+        }
+
+        // Call when page loads
+        displayScores();
+    </script>
+</body>
+</html>

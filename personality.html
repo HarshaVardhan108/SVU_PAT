@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <h1 class="nav-title">SVU Personality Assessment Test</h1>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="container">
+            <h1 class="section-title">Your Unique Personality</h1>
+            
+            <p class="section-description">
+                Every individual has a unique personality and this section is to understand it so as to bring out the best in you. Choose the option which are closest to your personality.
+            </p>
+
+            <form action="interests.html" method="GET">
+                <div class="question">
+                    <p class="question-text">What among the following is your preferred food item?</p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="food1" name="food_preference" value="satvik" data-marks="10">
+                            <label for="food1">Satvik Vegetarian food</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="food2" name="food_preference" value="both" data-marks="4">
+                            <label for="food2">Both Vegetarian and Non-Vegetarian</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="food3" name="food_preference" value="eggitarian">
+                            <label for="food3">I am an Eggitarian</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="food4" name="food_preference" value="spicy">
+                            <label for="food4">I prefer Spicy Vegetarian Food</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">Which seat in the classroom do you generally prefer where you feel you can comfortably learn?</p>
+                    <img src="assets/classroom.webp" alt="Classroom seating layout" class="classroom-image">
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="seat1" name="seat_preference" value="front" data-marks="8">
+                            <label for="seat1">Front row - Close to teacher</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="seat2" name="seat_preference" value="middle" data-marks="6">
+                            <label for="seat2">Middle rows - Balanced view</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="seat3" name="seat_preference" value="back">
+                            <label for="seat3">Back rows - Overall view</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">Which kind of music and songs do you hear the most?</p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="music1" name="music_preference" value="western">
+                            <label for="music1">Western Music</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="music2" name="music_preference" value="classical">
+                            <label for="music2">Indian Classical Music</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="music3" name="music_preference" value="devotional">
+                            <label for="music3">Devotional Music</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="music4" name="music_preference" value="bollywood">
+                            <label for="music4">Bollywood Movie Songs</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="music5" name="music_preference" value="patriotic">
+                            <label for="music5">Patriotic & Cultural Songs</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">Which of the following book titles is most Appealing and Inspiring to you?</p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="book1" name="book_preference" value="five_point">
+                            <label for="book1">5 point someone</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="book2" name="book_preference" value="wings_fire">
+                            <label for="book2">The Wings of fire</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="book3" name="book_preference" value="religious">
+                            <label for="book3">Bhagavad Gita / Ramayana / Quran / Bible</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="book4" name="book_preference" value="atomic_habits">
+                            <label for="book4">Atomic Habits</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="book5" name="book_preference" value="accidental_pm">
+                            <label for="book5">The Accidental Prime-minister</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">How do you prefer to start your day during exam preparation?</p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="morning1" name="morning_routine" value="meditation" data-marks="10">
+                            <label for="morning1">Start with meditation/prayer followed by focused study</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="morning2" name="morning_routine" value="direct_study" data-marks="4">
+                            <label for="morning2">Directly jump into studies to maximize time</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="morning3" name="morning_routine" value="social" data-marks="2">
+                            <label for="morning3">Check social media first, then start studying</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="morning4" name="morning_routine" value="exercise" data-marks="6">
+                            <label for="morning4">Begin with yoga/exercise then study</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">When facing academic stress, what's your go-to solution?</p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="stress1" name="stress_management" value="spiritual" data-marks="10">
+                            <label for="stress1">Practice meditation or read spiritual texts for clarity</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="stress2" name="stress_management" value="entertainment" data-marks="2">
+                            <label for="stress2">Watch movies/series or play games to forget about it</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="stress3" name="stress_management" value="friends" data-marks="4">
+                            <label for="stress3">Hang out with friends to feel better</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="stress4" name="stress_management" value="guidance" data-marks="8">
+                            <label for="stress4">Seek guidance from mentors/spiritual guides</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">How do you view the relationship between science and spirituality?</p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="science1" name="science_spirituality" value="complement" data-marks="10">
+                            <label for="science1">They complement each other and both are necessary for complete understanding</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="science2" name="science_spirituality" value="separate" data-marks="4">
+                            <label for="science2">They are separate domains and should be kept that way</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="science3" name="science_spirituality" value="science_only" data-marks="2">
+                            <label for="science3">Science is enough, spirituality is not relevant in modern times</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="science4" name="science_spirituality" value="exploring" data-marks="8">
+                            <label for="science4">I'm exploring how both can help in my academic and personal growth</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">When working on a group project, what's your approach?</p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="group1" name="group_work" value="spiritual_leader" data-marks="10">
+                            <label for="group1">Lead with empathy and wisdom, ensuring everyone's growth while achieving goals</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="group2" name="group_work" value="result_focused" data-marks="4">
+                            <label for="group2">Focus on getting the work done efficiently, regardless of team dynamics</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="group3" name="group_work" value="passive" data-marks="2">
+                            <label for="group3">Do my assigned part quietly without much interaction</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="group4" name="group_work" value="balanced" data-marks="8">
+                            <label for="group4">Balance task completion with team harmony and mutual understanding</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">What's your perspective on college life and personal development?</p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="life1" name="life_perspective" value="holistic" data-marks="10">
+                            <label for="life1">It's a time for both academic excellence and spiritual growth</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="life2" name="life_perspective" value="career" data-marks="4">
+                            <label for="life2">Focus should be mainly on securing a good job/career</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="life3" name="life_perspective" value="fun" data-marks="2">
+                            <label for="life3">It's the time to enjoy life and have fun with friends</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="life4" name="life_perspective" value="balance" data-marks="8">
+                            <label for="life4">Try to balance academics, spirituality, and social life</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">Which kind of events / clubs are you eagerly waiting to take part in college?</p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="club1" name="club_preference" value="social" data-marks="8">
+                            <label for="club1">Social services activities</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="club2" name="club_preference" value="arts" data-marks="4">
+                            <label for="club2">Music / Art / Dramatics Club</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="club3" name="club_preference" value="technical" data-marks="6">
+                            <label for="club3">Coding Events / Technical Events</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="club4" name="club_preference" value="spiritual" data-marks="10">
+                            <label for="club4">Spirituality and wellness</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="club5" name="club_preference" value="none" data-marks="2">
+                            <label for="club5">No Clubs</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" class="nav-btn back-btn" onclick="history.back()">Back</button>
+                    <button type="submit" class="nav-btn next-btn">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            let personalityScore = 0;
+            
+            // Calculate personality scores
+            document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+                personalityScore += parseInt(radio.dataset.marks || 0);
+            });
+            
+            // Store personality score in session storage
+            sessionStorage.setItem('personalityScore', personalityScore);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section-description {
+            margin-bottom: 30px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .question {
+            margin-bottom: 40px;
+        }
+
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .nav-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049;
+        }
+
+        .back-btn {
+            background-color: #666;
+        }
+
+        .back-btn:hover {
+            background-color: #555;
+        }
+
+        .word-limit {
+            font-size: 14px;
+            color: #666;
+            margin-top: -15px;
+            margin-bottom: 30px;
+        }
+
+        .examples {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            margin-top: 4px;
+        }
+
+        .checkbox-option label {
+            font-size: 16px;
+            color: #444;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <h1 class="nav-title">SVU Personality Assessment Test</h1>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="container">
+        <h1 class="section-title">Express Yourself</h1>
+        
+        <p class="section-description">
+            Keep it VERY BRIEF and to the point ( 10-50 words max )
+        </p>
+
+        <form action="/personality.html" method="GET">
+            <div class="question">
+                <p class="question-text">
+                    If you would be Prime Minister of the country, what changes would you like to bring to the country in general?
+                </p>
+                <textarea name="pm_changes" maxlength="500" ></textarea>
+                <p class="word-limit">Maximum 50 words</p>
+            </div>
+
+            <div class="question">
+                <p class="question-text">
+                    Where do you feel our Education system is lagging behind? If given an opportunity what changes you wish to bring in our educational system?
+                </p>
+                <textarea name="education_changes" maxlength="500" ></textarea>
+                <p class="word-limit">Maximum 50 words</p>
+            </div>
+
+            <div class="question">
+                <p class="question-text">
+                    What is your Ambition in Life? ( Answer very briefly )
+                </p>
+                <textarea name="ambition" maxlength="500" ></textarea>
+                <p class="word-limit">Maximum 50 words</p>
+            </div>
+
+            <div class="question">
+                <p class="question-text">
+                    Please name any Role Model(s) you have? <span class="required">*</span>
+                    <div class="examples">
+                        ( Eg: Kiran Bedi / Arjuna-from The Mahabharata / Ratan Tata / Elon Musk / Dr. APJ Abdul Kalam / Narendra Modi / Swami Prabhupad / Gaur Gopal Das / MS Dhoni / Sonu Sood / Neeraj Chopra / Lord Shri Ramchandra, etc )
+                    </div>
+                </p>
+                <textarea name="role_models" maxlength="500" ></textarea>
+                <p class="word-limit">Maximum 50 words</p>
+            </div>
+
+            <div class="question">
+                <p class="question-text">
+                    Wisdom Eye Club conducts events to provide a platform for young budding talents. Please mention any special skills, talents, or interests that you possess ( if any ) which bring out your unique personality and potential. <span class="required">*</span>
+                </p>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="musical" name="skills[]" value="musical">
+                        <label for="musical">Musical skills</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="literary" name="skills[]" value="literary">
+                        <label for="literary">Literary skills</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="coding" name="skills[]" value="coding">
+                        <label for="coding">Coding skills</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="business" name="skills[]" value="business">
+                        <label for="business">Business acumen</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="app_dev" name="skills[]" value="app_dev">
+                        <label for="app_dev">App development</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="painting" name="skills[]" value="painting">
+                        <label for="painting">Painting</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="drama" name="skills[]" value="drama">
+                        <label for="drama">Theatrics and Drama</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="other_skill" name="skills[]" value="other">
+                        <label for="other_skill">Other</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text">
+                    What do you like to do in your free time - Hobbies and interests? ( Select ONLY those which really describes you the best ) <span class="required">*</span>
+                </p>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="sleep" name="hobbies[]" value="sleep">
+                        <label for="sleep">I Love to sleep for long hours</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="games" name="hobbies[]" value="games">
+                        <label for="games">I am very fond of playing computer games</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="animation" name="hobbies[]" value="animation">
+                        <label for="animation">I Like to watch animation series</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="nature" name="hobbies[]" value="nature">
+                        <label for="nature">I Like to spend time with nature</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="friends" name="hobbies[]" value="friends">
+                        <label for="friends">I go out to play with friends</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="stress_relief" name="hobbies[]" value="stress_relief">
+                        <label for="stress_relief">I Like to drink and smoke to relieve stress</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="novels" name="hobbies[]" value="novels">
+                        <label for="novels">I Like to read novels</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="self_help" name="hobbies[]" value="self_help">
+                        <label for="self_help">I Like to read self-help books</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="news" name="hobbies[]" value="news">
+                        <label for="news">I Like to read Newspapers & Watch TV News</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="temples" name="hobbies[]" value="temples">
+                        <label for="temples">I Like to visit Temples & other holy places</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="sports" name="hobbies[]" value="sports">
+                        <label for="sports">I Like to go out for playing sports</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="social_media" name="hobbies[]" value="social_media">
+                        <label for="social_media">I Like to regularly surf Youtube and other social networking platforms</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="theatrics" name="hobbies[]" value="theatrics">
+                        <label for="theatrics">I am interested in theatrics. I Like to spend time there</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="food" name="hobbies[]" value="food">
+                        <label for="food">I am a foodie. I Love to taste different types of food items</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="adventure" name="hobbies[]" value="adventure">
+                        <label for="adventure">I Like Adventures and socializing with people</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="puzzles" name="hobbies[]" value="puzzles">
+                        <label for="puzzles">I Like to solve puzzles and physics & math's quizzes</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="other_hobby" name="hobbies[]" value="other">
+                        <label for="other_hobby">Other</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button type="button" class="nav-btn back-btn" onclick="history.back()">Back</button>
+                <button type="submit" class="nav-btn next-btn">Next</button>
+            </div>
+        </form>
+        </div>
+    </div>
+    <script>
+        // Add word count validation
+        document.querySelectorAll('textarea').forEach(textarea => {
+            textarea.addEventListener('input', function() {
+                const words = this.value.trim().split(/\s+/);
+                if (words.length > 50) {
+                    const truncated = words.slice(0, 50).join(' ');
+                    this.value = truncated;
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

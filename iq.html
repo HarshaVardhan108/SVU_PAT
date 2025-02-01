@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <h1 class="nav-title">SVU Personality Assessment Test</h1>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="container">
+            <h1 class="section-title">IQ Test</h1>
+            
+            <p class="section-description">
+                This section will test your logical reasoning and problem-solving abilities. Choose the most appropriate answer for each question.
+            </p>
+
+            <form action="thanks.html" method="GET">
+                <div class="question">
+                    <p class="question-text">
+                        <span class="question-number">1.</span>
+                        Complete the matrix by choosing the correct pattern:
+                    </p>
+                    <img src="assets/iq_1 pattern-que.png" alt="Pattern matrix showing geometric shapes in a 3x3 grid with one missing" class="question-image">
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="matrix_a" name="matrix" value="a">
+                            <label for="matrix_a">A) Octagon</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="matrix_b" name="matrix" value="b">
+                            <label for="matrix_b">B) Diamond</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="matrix_c" name="matrix" value="c">
+                            <label for="matrix_c">C) Oval</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="matrix_d" name="matrix" value="d">
+                            <label for="matrix_d">D) Pentagon</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="matrix_e" name="matrix" value="e" data-marks="10">
+                            <label for="matrix_e">E) Triangle</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="matrix_f" name="matrix" value="f">
+                            <label for="matrix_f">F) Hexagon</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">
+                        <span class="question-number">2.</span>
+                        Find the missing number in the pattern:
+                    </p>
+                    <img src="assets/iq_2 pattern-que.png" alt="Number pattern showing three groups of numbers: 6,3,12 and 4,2,8 and 2,?,4" class="question-image">
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q2_a" name="q2" value="a">
+                            <label for="q2_a">A) 0</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2_b" name="q2" value="b">
+                            <label for="q2_b">B) 3</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2_c" name="q2" value="c" data-marks="10">
+                            <label for="q2_c">C) 1</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2_d" name="q2" value="d">
+                            <label for="q2_d">D) 2</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">
+                        <span class="question-number">3.</span>
+                        If x² + 4x + 4 = 0, then the value of x is:
+                    </p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q3_a" name="q3" value="a">
+                            <label for="q3_a">A) 2</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3_b" name="q3" value="b" data-marks="10">
+                            <label for="q3_b">B) -2</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3_c" name="q3" value="c">
+                            <label for="q3_c">C) 4</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3_d" name="q3" value="d">
+                            <label for="q3_d">D) -4</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">
+                        <span class="question-number">4.</span>
+                        A train running at 60 kmph crosses a pole in 9 seconds. What is the length of the train? <span class="required">*</span>
+                    </p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q4_a" name="q4" value="a">
+                            <label for="q4_a">A) 150 meters</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4_b" name="q4" value="b">
+                            <label for="q4_b">B) 180 meters</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4_c" name="q4" value="c">
+                            <label for="q4_c">C) 120 meters</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4_d" name="q4" value="d">
+                            <label for="q4_d">D) 150 feet</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">
+                        <span class="question-number">5.</span>
+                        If 5 workers can build a wall in 8 days, how many days will it take for 10 workers to build the same wall? <span class="required">*</span>
+                    </p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q5_a" name="q5" value="a">
+                            <label for="q5_a">A) 16 days</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5_b" name="q5" value="b">
+                            <label for="q5_b">B) 4 days</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5_c" name="q5" value="c">
+                            <label for="q5_c">C) 8 days</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5_d" name="q5" value="d">
+                            <label for="q5_d">D) 2 days</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p class="question-text">
+                        <span class="question-number">6.</span>
+                        Complete the series: 2, 6, 12, 20, 30, __? <span class="required">*</span>
+                    </p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q6_a" name="q6" value="a">
+                            <label for="q6_a">A) 42</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6_b" name="q6" value="b">
+                            <label for="q6_b">B) 40</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6_c" name="q6" value="c">
+                            <label for="q6_c">C) 38</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6_d" name="q6" value="d">
+                            <label for="q6_d">D) 44</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" class="nav-btn back-btn" onclick="history.back()">Back</button>
+                    <button type="submit" class="nav-btn next-btn">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
