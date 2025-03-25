@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 /* Common styles for all pages */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    user-select: none;
 }
 
 body {
@@ -94,6 +96,8 @@ body {
     margin-bottom: 15px;
     color: #2c3e50;
     font-weight: 500;
+    font-family: "Roboto Mono", monospace;
+
 }
 
 /* Option styles */
@@ -143,6 +147,7 @@ button[type="submit"],
     letter-spacing: 1px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
 }
 
 .nav-btn:hover, 
@@ -184,21 +189,73 @@ button[type="submit"]:hover,
     }
 
     .navigation-buttons {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
     }
 
     .nav-btn, 
     button[type="submit"],
     .back-btn,
     .next-btn {
-        width: 100%;
-        padding: 12px 20px;
+        width: auto;
+        padding: 10px 20px;
+        font-size: 14px;
+        min-width: 100px;
     }
 
-    .question-image, 
-    .discover-image {
-        margin: 20px auto;
+    .rating-option label {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .rating-options {
+        gap: 12px;
+        justify-content: flex-start;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navigation-buttons {
+        margin-top: 20px;
+        padding: 10px 0;
+    }
+
+    .nav-btn, 
+    button[type="submit"],
+    .back-btn,
+    .next-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+        min-width: 90px;
+    }
+
+    .rating-option label {
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+        border-width: 1.5px;
+    }
+
+    .rating-options {
+        gap: 8px;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 360px) {
+    .rating-options {
+        gap: 6px;
+    }
+
+    .rating-option label {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+        border-width: 1px;
     }
 }
 
@@ -214,6 +271,7 @@ textarea {
     font-size: 16px;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.9);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 input[type="text"]:focus,
@@ -237,10 +295,11 @@ textarea:focus {
 .rating-options {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     margin: 20px 0;
+    padding: 10px 0;
 }
 
 .rating-option {
@@ -255,14 +314,15 @@ textarea:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border: 2px solid #3498db;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
     color: #2c3e50;
     font-weight: 500;
+    font-size: 16px;
 }
 
 .rating-option input[type="radio"]:checked + label {
@@ -275,7 +335,7 @@ textarea:focus {
 .question-image, .discover-image {
     display: block;
     margin: 30px auto;
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

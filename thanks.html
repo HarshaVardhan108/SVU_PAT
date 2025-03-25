@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="nav-content">
@@ -15,10 +18,13 @@
             <h1 class="section-title">Thanks for giving the Test!</h1>
 
             <p class="course-question">
-                Would you like to join a 8 session certified course based on Science and Spirituality specially meant for the Students from Top Colleges? (It will be conducted at your convenient time). <span class="required">*</span>
+                Would you like to join a 8 session certified course based on Science and Spirituality specially meant
+                for the Students from Top Colleges? (It will be conducted at your convenient time). <span
+                    class="required">*</span>
             </p>
 
-            <img src="assets/DYS 2021 Poster.jpeg" alt="Discover yourself - An Eight-session journey" class="discover-image" width="500px">
+            <img src="assets/DYS 2021 Poster.jpeg" alt="Discover yourself - An Eight-session journey"
+                class="discover-image">
 
             <div class="select-container">
                 <select name="join_course">
@@ -36,7 +42,7 @@
 
             <div class="navigation-buttons">
                 <button type="button" class="nav-btn back-btn" onclick="history.back()">Back</button>
-                <button type="submit" class="nav-btn">Submit</button>
+                <button type="submit" class="nav-btn" onclick="handleSubmit()">Submit</button>
             </div>
         </div>
     </div>
@@ -46,14 +52,34 @@
             const mcqScore = parseInt(sessionStorage.getItem('mcqScore') || 0);
             const personalityScore = parseInt(sessionStorage.getItem('personalityScore') || 0);
             const interestScore = parseInt(sessionStorage.getItem('interestScore') || 0);
+            const expressScore = parseInt(sessionStorage.getItem('expressScore') || 0);
 
             document.getElementById('mcqScore').textContent = `${mcqScore}/50`;
             document.getElementById('personalityScore').textContent = `${personalityScore}/50`;
             document.getElementById('interestScore').textContent = `${interestScore}/50`;
+            document.getElementById('expressScore').textContent = `${expressScore}/50`;
+        }
+
+        function handleSubmit() {
+            // Prevent user from writing the quiz again
+            localStorage.setItem('quizSubmitted', 'true');
+            window.location.href = 'submit.html';
         }
 
         // Call when page loads
         displayScores();
+
+        // Prevent going back
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+
+        // Check if the quiz has already been submitted
+        if (localStorage.getItem('quizSubmitted') === 'true') {
+            window.location.href = 'submit.html';
+        }
     </script>
 </body>
+
 </html>
