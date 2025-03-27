@@ -68,11 +68,14 @@
             
             // Submit form to Netlify
             const form = e.target;
-            fetch('/', {
-                method: 'POST',
-                body: new FormData(form)
-            })
-            .then(() => {
+
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(() => {
                 // Prevent user from writing the quiz again
                 localStorage.setItem('quizSubmitted', 'true');
                 window.location.href = '/submit.html';
@@ -82,20 +85,11 @@
                 alert('There was an error submitting the form. Please try again.');
             });
         });
-
-        // Call when page loads
-        displayScores();
-
         // Prevent going back
         history.pushState(null, null, document.URL);
         window.addEventListener('popstate', function () {
             history.pushState(null, null, document.URL);
         });
-
-        // Check if the quiz has already been submitted
-        if (localStorage.getItem('quizSubmitted') === 'true') {
-            window.location.href = 'submit.html';
-        }
     </script>
 </body>
 
