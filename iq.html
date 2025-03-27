@@ -18,7 +18,8 @@
                 This section will test your logical reasoning and problem-solving abilities. Choose the most appropriate answer for each question.
             </p>
 
-            <form action="thanks.html" method="post" data-netlify="true" >
+            <form name="iq-form" method="POST" data-netlify="true" action="/thanks.html">
+                <input type="hidden" name="form-name" value="iq-form" />
                 <div class="question">
                     <p class="question-text">
                         <span class="question-number">1.</span>
@@ -186,6 +187,35 @@
             </form>
         </div>
     </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let iqScore = 0;
+            
+            // Calculate IQ scores from radio buttons
+            document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+                iqScore += parseInt(radio.dataset.marks || 0);
+            });
+            
+            // Store IQ score in session storage
+            sessionStorage.setItem('iqScore', iqScore);
+
+            // Submit form to Netlify
+            const form = e.target;
+            fetch('/', {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(() => {
+                window.location.href = '/thanks.html';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting the form. Please try again.');
+            });
+        });
+    </script>
 </body>
 <script src="script.js"></script>
 </html>

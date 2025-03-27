@@ -362,7 +362,8 @@
             <li>IQ comprises 30% of the total score.</li>
         </ol>
 
-            <form action="/mcq.html" method="post" data-netlify="true">
+            <form name="registration-form" method="POST" data-netlify="true" action="/mcq.html">
+                <input type="hidden" name="form-name" value="registration-form" />
                 <div class="form-row">
                     <label for="name">Name <span class="required">*</span></label>
                     <input type="text" id="name" name="student_name" placeholder="Enter your name" >
@@ -435,6 +436,24 @@
     </section>
 
     <script>
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            fetch('/', {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(() => {
+                window.location.href = '/mcq.html';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting the form. Please try again.');
+            });
+        });
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

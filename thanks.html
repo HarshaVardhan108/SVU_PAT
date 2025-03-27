@@ -17,33 +17,37 @@
         <div class="container">
             <h1 class="section-title">Thanks for giving the Test!</h1>
 
-            <p class="course-question">
-                Would you like to join a 8 session certified course based on Science and Spirituality specially meant
-                for the Students from Top Colleges? (It will be conducted at your convenient time). <span
-                    class="required">*</span>
-            </p>
+            <form name="feedback-form" method="POST" data-netlify="true" action="/submit.html">
+                <input type="hidden" name="form-name" value="feedback-form" />
+                
+                <p class="course-question">
+                    Would you like to join a 8 session certified course based on Science and Spirituality specially meant
+                    for the Students from Top Colleges? (It will be conducted at your convenient time). <span
+                        class="required">*</span>
+                </p>
 
-            <img src="assets/DYS 2021 Poster.jpeg" alt="Discover yourself - An Eight-session journey"
-                class="discover-image">
+                <img src="assets/DYS 2021 Poster.jpeg" alt="Discover yourself - An Eight-session journey"
+                    class="discover-image">
 
-            <div class="select-container">
-                <select name="join_course">
-                    <option value="">Select your response</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                    <option value="maybe">Maybe</option>
-                </select>
-            </div>
+                <div class="select-container">
+                    <select name="join_course" required>
+                        <option value="">Select your response</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="maybe">Maybe</option>
+                    </select>
+                </div>
 
-            <div class="feedback-container">
-                <p class="feedback-title">Feedback: Any Comments / Questions / Suggestions?</p>
-                <textarea name="feedback" placeholder="Enter your feedback here..."></textarea>
-            </div>
+                <div class="feedback-container">
+                    <p class="feedback-title">Feedback: Any Comments / Questions / Suggestions?</p>
+                    <textarea name="feedback" placeholder="Enter your feedback here..."></textarea>
+                </div>
 
-            <div class="navigation-buttons">
-                <button type="button" class="nav-btn back-btn" onclick="history.back()">Back</button>
-                <button type="submit" class="nav-btn" onclick="handleSubmit()">Submit</button>
-            </div>
+                <div class="navigation-buttons">
+                    <button type="button" class="nav-btn back-btn" onclick="history.back()">Back</button>
+                    <button type="submit" class="nav-btn">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -53,18 +57,31 @@
             const personalityScore = parseInt(sessionStorage.getItem('personalityScore') || 0);
             const interestScore = parseInt(sessionStorage.getItem('interestScore') || 0);
             const expressScore = parseInt(sessionStorage.getItem('expressScore') || 0);
+            const iqScore = parseInt(sessionStorage.getItem('iqScore') || 0);
 
-            document.getElementById('mcqScore').textContent = `${mcqScore}/50`;
-            document.getElementById('personalityScore').textContent = `${personalityScore}/50`;
-            document.getElementById('interestScore').textContent = `${interestScore}/50`;
-            document.getElementById('expressScore').textContent = `${expressScore}/50`;
+            // You can display scores if needed
         }
 
-        function handleSubmit() {
-            // Prevent user from writing the quiz again
-            localStorage.setItem('quizSubmitted', 'true');
-            window.location.href = 'submit.html';
-        }
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Submit form to Netlify
+            const form = e.target;
+            fetch('/', {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(() => {
+                // Prevent user from writing the quiz again
+                localStorage.setItem('quizSubmitted', 'true');
+                window.location.href = '/submit.html';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting the form. Please try again.');
+            });
+        });
 
         // Call when page loads
         displayScores();
