@@ -13,6 +13,7 @@ body {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
+    font-size: 1rem;
 }
 
 @keyframes gradient {
@@ -45,7 +46,7 @@ body {
 
 .nav-title {
     color: transparent;
-    font-size: 24px;
+    font-size: clamp(1.1rem, 4vw, 2rem);
     font-weight: 600;
     text-align: center;
     background: linear-gradient(45deg, #3498db, #2ecc71);
@@ -61,11 +62,11 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 48rem;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    border-radius: 8px;
+    padding: clamp(1rem, 4vw, 2.5rem);
+    border-radius: 0.5rem;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -92,12 +93,11 @@ body {
 }
 
 .question-text {
-    font-size: 18px;
-    margin-bottom: 15px;
+    font-size: clamp(1rem, 2.8vw, 1.2rem);
+    margin-bottom: 0.9rem;
     color: #2c3e50;
     font-weight: 500;
     font-family: "Roboto Mono", monospace;
-
 }
 
 /* Option styles */
@@ -118,7 +118,7 @@ body {
 }
 
 .option label {
-    font-size: 16px;
+    font-size: clamp(0.97rem, 2.5vw, 1.08rem);
     color: #444;
 }
 
@@ -131,23 +131,38 @@ body {
     padding: 20px 0;
 }
 
+/* Express page custom nav styles */
+.express-nav {
+    margin-top: 48px;
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .express-nav {
+        justify-content: center;
+        gap: 16px;
+        margin-top: 36px;
+    }
+}
+
+
 .nav-btn, 
 button[type="submit"],
 .back-btn,
 .next-btn {
     background: linear-gradient(45deg, #3498db, #2980b9);
     color: white;
-    padding: 12px 30px;
+    padding: clamp(0.7rem, 2vw, 1.1rem) clamp(1.2rem, 5vw, 2.2rem);
     border: none;
-    border-radius: 25px;
+    border-radius: 1.5rem;
     cursor: pointer;
-    font-size: 16px;
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    min-width: 120px;
+    min-width: 90px;
 }
 
 .nav-btn:hover, 
@@ -175,50 +190,59 @@ button[type="submit"]:hover,
 
 /* Responsive design */
 @media (max-width: 768px) {
-    .nav-title {
-        font-size: 18px;
+    html {
+        font-size: 15px;
     }
-
     .container {
-        margin: 10px;
-        padding: 15px;
+        margin: 0.5rem;
+        padding: clamp(0.7rem, 2vw, 1.2rem);
     }
-
-    .question:hover {
-        transform: none;
+    .section-title {
+        font-size: clamp(1.1rem, 5vw, 1.5rem);
     }
-
-    .navigation-buttons {
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 10px;
-        width: 100%;
+    .section-description {
+        font-size: clamp(0.95rem, 3vw, 1.05rem);
     }
-
-    .nav-btn, 
-    button[type="submit"],
-    .back-btn,
-    .next-btn {
-        width: auto;
-        padding: 10px 20px;
-        font-size: 14px;
-        min-width: 100px;
+    .question-text {
+        font-size: clamp(0.95rem, 3vw, 1.08rem);
     }
-
-    .rating-option label {
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
+    .option label {
+        font-size: clamp(0.9rem, 2.2vw, 1rem);
     }
-
-    .rating-options {
-        gap: 12px;
-        justify-content: flex-start;
-        padding: 5px;
+    .nav-btn, button[type="submit"], .back-btn, .next-btn {
+        padding: clamp(0.5rem, 2vw, 0.9rem) clamp(1rem, 4vw, 1.5rem);
+        font-size: clamp(0.8rem, 2vw, 1rem);
     }
 }
 
 @media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    .container {
+        margin: 0.2rem;
+        padding: clamp(0.5rem, 2vw, 0.7rem);
+    }
+    .section-title {
+        font-size: clamp(1rem, 6vw, 1.2rem);
+    }
+    .section-description {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+    }
+    .question-text {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+    }
+    .option label {
+        font-size: clamp(0.85rem, 2vw, 0.95rem);
+    }
+    .nav-title {
+        font-size: clamp(1rem, 5vw, 1.1rem);
+    }
+    .nav-btn, button[type="submit"], .back-btn, .next-btn {
+        padding: clamp(0.4rem, 2vw, 0.7rem) clamp(0.7rem, 3vw, 1rem);
+        font-size: clamp(0.75rem, 2vw, 0.95rem);
+    }
+}
     .navigation-buttons {
         margin-top: 20px;
         padding: 10px 0;
@@ -357,16 +381,16 @@ textarea:focus {
 /* Section titles and descriptions */
 .section-title {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 1.5rem;
     color: #2c3e50;
-    font-size: 32px;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
     font-weight: 600;
 }
 
 .section-description {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 2rem;
     color: #34495e;
-    font-size: 18px;
+    font-size: clamp(1rem, 3vw, 1.125rem);
     line-height: 1.6;
 }

@@ -3,6 +3,10 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
 </head>
 <body>
     <nav class="navbar">
@@ -18,7 +22,7 @@
                 Every individual has a unique personality and this section is to understand it so as to bring out the best in you. Choose the option which are closest to your personality.
             </p>
 
-            <form name="assessment-form" method="POST" data-netlify="true" action="/interests.html">
+            <form name="assessment-form" id="assessment-form">
                 <input type="hidden" name="form-name" value="assessment-form" />
                 <div class="question">
                     <p class="question-text">1. What among the following is your preferred food item? <span class="required">*</span></p>
@@ -260,31 +264,49 @@
     <script>
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            let personalityScore = 0;
-            
-            // Calculate personality scores
-            document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
-                personalityScore += parseInt(radio.dataset.marks || 0);
-            });
-            
-            // Store personality score in session storage
-            sessionStorage.setItem('personalityScore', personalityScore);
 
-            // Submit form to Netlify
+            // Collect all form data, including all section options
             const form = e.target;
-            fetch('/', {
-                method: 'POST',
-                body: new FormData(form)
-            })
-            .then(() => {
-                window.location.href = '/interests.html';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting the form. Please try again.');
+            const formData = new FormData(form);
+            const formDataObj = {};
+            for (const [key, value] of formData.entries()) {
+                if (formDataObj[key]) {
+                    if (Array.isArray(formDataObj[key])) {
+                        formDataObj[key].push(value);
+                    } else {
+                        formDataObj[key] = [formDataObj[key], value];
+                    }
+                } else {
+                    formDataObj[key] = value;
+                }
+            }
+
+            // Calculate personality section marks
+            const personalityNames = [
+                'food_preference',
+                'seat_preference',
+                'productive_time',
+                'movie_genre',
+                'music_preference',
+                'book_preference',
+                'wall_painting',
+                'club_preference',
+                'career_outlook'
+            ];
+            let personality_marks = 0;
+            personalityNames.forEach(name => {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                if (selected) personality_marks += parseInt(selected.getAttribute('data-marks')) || 0;
             });
+            formDataObj['personality_marks'] = personality_marks;
+
+            // Store all personality section data in sessionStorage for next page/backend
+            sessionStorage.setItem('personalityData', JSON.stringify(formDataObj));
+
+            // Navigate to the next page
+            window.location.href = '/interests.html';
         });
+        
     </script>
 </body>
 <script src="script.js"></script>

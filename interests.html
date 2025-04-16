@@ -3,6 +3,10 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
 </head>
 <body>
     <nav class="navbar">
@@ -18,7 +22,7 @@
                 Rate your interest level in the following areas from 1 to 10, where 1 means least interested and 10 means highly interested.
             </p>
 
-            <form name="assessment-form" method="POST" data-netlify="true" action="/iq.html">
+            <form name="assessment-form" data-netlify="true">
                 <input type="hidden" name="form-name" value="assessment-form" />
                 <div class="question">
                     <p class="question-text">Spirituality <span class="required">*</span></p>
@@ -215,30 +219,42 @@
     <script>
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            let interestScore = 0;
-            
-            // Calculate scores from radio buttons
-            document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
-                interestScore += parseInt(radio.dataset.marks || 0);
-            });
-            
-            // Store interest score in session storage
-            sessionStorage.setItem('interestScore', interestScore);
 
-            // Submit form to Netlify
+            // Collect all form data, including all section options
             const form = e.target;
-            fetch('/', {
-                method: 'POST',
-                body: new FormData(form)
-            })
-            .then(() => {
-                window.location.href = '/iq.html';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting the form. Please try again.');
+            const formData = new FormData(form);
+            const formDataObj = {};
+            for (const [key, value] of formData.entries()) {
+                if (formDataObj[key]) {
+                    if (Array.isArray(formDataObj[key])) {
+                        formDataObj[key].push(value);
+                    } else {
+                        formDataObj[key] = [formDataObj[key], value];
+                    }
+                } else {
+                    formDataObj[key] = value;
+                }
+            }
+
+            // Calculate interest section marks for all four interest questions
+            const interestNames = [
+                'spirituality_interest',
+                'yoga_interest',
+                'meditation_interest',
+                'social_service_interest'
+            ];
+            let interest_marks = 0;
+            interestNames.forEach(name => {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                if (selected) interest_marks += parseInt(selected.getAttribute('data-marks')) || 0;
             });
+            formDataObj['interest_marks'] = interest_marks;
+
+            // Store all interests section data in sessionStorage for next page/backend
+            sessionStorage.setItem('interestsData', JSON.stringify(formDataObj));
+
+            // Navigate to the next page
+            window.location.href = '/iq.html';
         });
     </script>
 </body>

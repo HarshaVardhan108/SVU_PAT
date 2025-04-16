@@ -3,6 +3,10 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
 </head>
 <body>
     <nav class="navbar">
@@ -190,30 +194,44 @@
     <script>
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            let iqScore = 0;
-            
-            // Calculate IQ scores from radio buttons
-            document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
-                iqScore += parseInt(radio.dataset.marks || 0);
-            });
-            
-            // Store IQ score in session storage
-            sessionStorage.setItem('iqScore', iqScore);
 
-            // Submit form to Netlify
+            // Collect all form data, including all section options
             const form = e.target;
-            fetch('/', {
-                method: 'POST',
-                body: new FormData(form)
-            })
-            .then(() => {
-                window.location.href = '/thanks.html';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting the form. Please try again.');
+            const formData = new FormData(form);
+            const formDataObj = {};
+            for (const [key, value] of formData.entries()) {
+                if (formDataObj[key]) {
+                    if (Array.isArray(formDataObj[key])) {
+                        formDataObj[key].push(value);
+                    } else {
+                        formDataObj[key] = [formDataObj[key], value];
+                    }
+                } else {
+                    formDataObj[key] = value;
+                }
+            }
+
+            // Calculate IQ section marks
+            const iqNames = [
+                'matrix',
+                'q2',
+                'q3',
+                'q4',
+                'q5',
+                'q6'
+            ];
+            let iq_marks = 0;
+            iqNames.forEach(name => {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                if (selected) iq_marks += parseInt(selected.getAttribute('data-marks')) || 0;
             });
+            formDataObj['iq_marks'] = iq_marks;
+
+            // Store all IQ section data in sessionStorage for next page/backend
+            sessionStorage.setItem('iqData', JSON.stringify(formDataObj));
+
+            // Navigate to the next page
+            window.location.href = '/thanks.html';
         });
     </script>
 </body>

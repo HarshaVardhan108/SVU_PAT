@@ -121,6 +121,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
 </head>
 
 <body>
@@ -137,7 +141,7 @@
                 Keep it VERY BRIEF and to the point ( 10-50 words max )
             </p>
 
-            <form name="assessment-form" method="POST" data-netlify="true" action="/personality.html">
+            <form name="assessment-form">
                 <input type="hidden" name="form-name" value="assessment-form" />
                 <div class="question">
                     <p class="question-text">
@@ -209,101 +213,86 @@
                             <input type="checkbox" id="painting" name="skills[]" value="painting" data-marks="">
                             <label for="painting">Painting</label>
                         </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="drama" name="skills[]" value="drama" data-marks="">
-                            <label for="drama">Theatrics and Drama</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="other_skill" name="skills[]" value="other" data-marks="">
-                            <label for="other_skill">Other</label>
-                        </div>
                     </div>
-                </div>
 
+                </div>
                 <div class="question">
                     <p class="question-text">
-                        6. What do you like to do in your free time - Hobbies and interests? ( Select ONLY those which
-                        really describes you the best ) <span class="required">*</span>
+                        5. Wisdom Eye Club conducts events to provide a platform for young budding talents. Please
+                        mention any special skills, talents, or interests that you possess ( if any ) which bring out
+                        your unique personality and potential. <span class="required">*</span>
                     </p>
-                    <div class="checkbox-group">
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="sleep" name="hobbies[]" value="sleep" data-marks = "">
-                            <label for="sleep">I Love to sleep for long hours</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="games" name="hobbies[]" value="games" data-marks="">
-                            <label for="games">I am very fond of playing computer games</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="animation" name="hobbies[]" value="animation" data-marks="">
-                            <label for="animation">I Like to watch animation series</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="nature" name="hobbies[]" value="nature" data-marks="">
-                            <label for="nature">I Like to spend time with nature</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="friends" name="hobbies[]" value="friends" data-marks="">
-                            <label for="friends">I go out to play with friends</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="stress_relief" name="hobbies[]" value="stress_relief" data-marks="">
-                            <label for="stress_relief">I Like to drink and smoke to relieve stress</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="novels" name="hobbies[]" value="novels" data-marks="">
-                            <label for="novels">I Like to read novels</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="self_help" name="hobbies[]" value="self_help" data-marks="">
-                            <label for="self_help">I Like to read self-help books</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="news" name="hobbies[]" value="news" data-marks="">
-                            <label for="news">I Like to read Newspapers & Watch TV News</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="temples" name="hobbies[]" value="temples" data-marks="">
-                            <label for="temples">I Like to visit Temples & other holy places</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="sports" name="hobbies[]" value="sports" data-marks="">
-                            <label for="sports">I Like to go out for playing sports</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="social_media" name="hobbies[]" value="social_media" data-marks="">
-                            <label for="social_media">I Like to regularly surf Youtube and other social networking
-                                platforms</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="theatrics" name="hobbies[]" value="theatrics" data-marks="">
-                            <label for="theatrics">I am interested in theatrics. I Like to spend time there</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="food" name="hobbies[]" value="food" data-marks="">
-                            <label for="food">I am a foodie. I Love to taste different types of food items</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="adventure" name="hobbies[]" value="adventure" data-marks="">
-                            <label for="adventure">I Like Adventures and socializing with people</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="puzzles" name="hobbies[]" value="puzzles" data-marks="">
-                            <label for="puzzles">I Like to solve puzzles and physics & math's quizzes</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="other_hobby" name="hobbies[]" value="other" data-marks="">
-                            <label for="other_hobby">Other</label>
-                        </div>
+
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="animation" name="hobbies[]" value="animation" data-marks="">
+                        <label for="animation">I Like to watch animation series</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="nature" name="hobbies[]" value="nature" data-marks="">
+                        <label for="nature">I Like to spend time with nature</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="friends" name="hobbies[]" value="friends" data-marks="">
+                        <label for="friends">I go out to play with friends</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="stress_relief" name="hobbies[]" value="stress_relief" data-marks="">
+                        <label for="stress_relief">I Like to drink and smoke to relieve stress</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="novels" name="hobbies[]" value="novels" data-marks="">
+                        <label for="novels">I Like to read novels</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="self_help" name="hobbies[]" value="self_help" data-marks="">
+                        <label for="self_help">I Like to read self-help books</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="news" name="hobbies[]" value="news" data-marks="">
+                        <label for="news">I Like to read Newspapers & Watch TV News</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="temples" name="hobbies[]" value="temples" data-marks="">
+                        <label for="temples">I Like to visit Temples & other holy places</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="sports" name="hobbies[]" value="sports" data-marks="">
+                        <label for="sports">I Like to go out for playing sports</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="social_media" name="hobbies[]" value="social_media" data-marks="">
+                        <label for="social_media">I Like to regularly surf Youtube and other social networking
+                            platforms</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="theatrics" name="hobbies[]" value="theatrics" data-marks="">
+                        <label for="theatrics">I am interested in theatrics. I Like to spend time there</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="food" name="hobbies[]" value="food" data-marks="">
+                        <label for="food">I am a foodie. I Love to taste different types of food items</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="adventure" name="hobbies[]" value="adventure" data-marks="">
+                        <label for="adventure">I Like Adventures and socializing with people</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="puzzles" name="hobbies[]" value="puzzles" data-marks="">
+                        <label for="puzzles">I Like to solve puzzles and physics & math's quizzes</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="other_hobby" name="hobbies[]" value="other" data-marks="">
+                        <label for="other_hobby">Other</label>
                     </div>
                 </div>
-
-                <div class="navigation-buttons">
-                    <button type="button" class="nav-btn back-btn" onclick="history.back()">Back</button>
-                    <button type="submit" class="nav-btn next-btn">Next</button>
-                </div>
-            </form>
+                    <div class="navigation-buttons">
+                        <button type="button" class="nav-btn back-btn" onclick="history.back()">Back</button>
+                        <button type="submit" class="nav-btn next-btn">Next</button>
+                    </div>
         </div>
+
+        </form>
+    </div>
     </div>
     <script>
         // Add word count validation
@@ -318,28 +307,46 @@
         });
 
         // Form submission handling
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.querySelector('form').addEventListener('submit', function (e) {
             e.preventDefault();
-            
-            let expressScore = 0;
-            // Calculate express scores if needed
-            
-            // Store express score in session storage
-            sessionStorage.setItem('expressScore', expressScore);
 
-            // Submit form to Netlify
+            // Collect all form data, including all section options
             const form = e.target;
-            fetch('/', {
-                method: 'POST',
-                body: new FormData(form)
-            })
-            .then(() => {
-                window.location.href = '/personality.html';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting the form. Please try again.');
+            const formData = new FormData(form);
+            const formDataObj = {};
+            for (const [key, value] of formData.entries()) {
+                if (formDataObj[key]) {
+                    if (Array.isArray(formDataObj[key])) {
+                        formDataObj[key].push(value);
+                    } else {
+                        formDataObj[key] = [formDataObj[key], value];
+                    }
+                } else {
+                    formDataObj[key] = value;
+                }
+            }
+
+            // Calculate express section marks (if you have a marks system)
+            const expressNames = [
+                'pm_changes',
+                'education_changes',
+                'ambition',
+                'role_models',
+                'skills[]',
+                'hobbies[]'
+            ];
+            let express_marks = 0;
+            expressNames.forEach(name => {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                if (selected) express_marks += parseInt(selected.getAttribute('data-marks')) || 0;
             });
+            formDataObj['express_marks'] = express_marks;
+
+            // Store all express section data in sessionStorage for next page/backend
+            sessionStorage.setItem('expressData', JSON.stringify(formDataObj));
+
+            // Navigate to the next page
+            window.location.href = '/personality.html';
         });
     </script>
 </body>

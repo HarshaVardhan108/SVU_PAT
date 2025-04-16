@@ -3,6 +3,10 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
 </head>
 <body>
     <nav class="navbar">
@@ -22,8 +26,12 @@
                 No one particular option is right. Different option carries different weightage. You can choose based on your personal thought process.
             </p>
 
-            <form name="assessment-form" method="POST" data-netlify="true" action="/express.html">
+            <form name="assessment-form" data-netlify="true">
                 <input type="hidden" name="form-name" value="assessment-form" />
+
+                <div id="mcq-total-marks-container" style="margin-top: 24px; text-align: right; font-weight: bold; font-size: 1.2em; color: #007bff;">
+                     <span id="mcq-total-marks"></span>
+                </div>
                 <div class="question">
                     <p class="question-text">
                         1. Media, Smart phone and Internet have tremendously impacted the world we live in. Apart from making us technologically advanced, how do you think have these affected our lives?
@@ -198,33 +206,69 @@
     </div>
 
     <script>
+        // Function to calculate and display MCQ total marks
+        function updateMcqTotalMarks() {
+            const mcqNames = [
+                'media_impact',
+                'god_belief',
+                'habit_behavior',
+                'vedic_text',
+                'newspaper_reading'
+            ];
+            let mcq_marks = 0;
+            mcqNames.forEach(name => {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                if (selected) mcq_marks += parseInt(selected.getAttribute('data-marks')) || 0;
+            });
+            document.getElementById('mcq-total-marks').textContent = mcq_marks;
+        }
+        // Attach change listeners to all MCQ radio buttons
+        document.querySelectorAll('input[type="radio"][data-marks]').forEach(input => {
+            input.addEventListener('change', updateMcqTotalMarks);
+        });
+        // Initial update on page load
+        updateMcqTotalMarks();
+
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault(); // Prevent default form submission
-            
-            let mcqScore = 0;
-            
-            // Calculate MCQ scores
-            document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
-                mcqScore += parseInt(radio.dataset.marks || 0);
-            });
-            
-            // Store MCQ score in session storage
-            sessionStorage.setItem('mcqScore', mcqScore);
 
-            // Submit form to Netlify
+            // Collect all form data, including all section options
             const form = e.target;
-            fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form)
-            })
-            .then(() => {
-                // Redirect to next page after successful submission
-                window.location.href = '/express.html';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting the form. Please try again.');
+            const formData = new FormData(form);
+            const formDataObj = {};
+            for (const [key, value] of formData.entries()) {
+                // For checkboxes/radios with same name, store as array
+                if (formDataObj[key]) {
+                    if (Array.isArray(formDataObj[key])) {
+                        formDataObj[key].push(value);
+                    } else {
+                        formDataObj[key] = [formDataObj[key], value];
+                    }
+                } else {
+                    formDataObj[key] = value;
+                }
+            }
+
+            // Calculate MCQ section marks
+            const mcqNames = [
+                'media_impact',
+                'god_belief',
+                'habit_behavior',
+                'vedic_text',
+                'newspaper_reading'
+            ];
+            let mcq_marks = 0;
+            mcqNames.forEach(name => {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                if (selected) mcq_marks += parseInt(selected.getAttribute('data-marks')) || 0;
             });
+            formDataObj['mcq_marks'] = mcq_marks;
+
+            // Store all section data in sessionStorage for next page/backend
+            sessionStorage.setItem('mcqData', JSON.stringify(formDataObj));
+
+            // Navigate to the next page
+            window.location.href = '/express.html';
         });
     </script>
 </body>

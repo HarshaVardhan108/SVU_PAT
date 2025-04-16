@@ -2,331 +2,14 @@
 <html>
 
 <head>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            /* overflow: hidden; */
-        }
-
-        /* Add/modify these styles */
-        html, body {
-            height: 100%;
-            overflow-x: hidden;
-            font-family: "Roboto Mono", monospace;
-
-        }
-
-        .container {
-            position: relative;
-            min-height: 100vh;
-            padding-bottom: 60px; /* Space for potential fixed elements */
-        }
-
-        .video {
-            height: 100%;
-            width: 100%;
-        }
-
-        .text {
-            transform: scale(1);
-            transition: 1s ease-in-out;
-            /* opacity: 0.8; */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: wheat;
-            font-size: 24px;
-            text-align: center;
-        }
-
-        .main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 35px;
-            overflow-y: auto;
-        }
-
-        .main h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .main h2 {
-            font-size: 24px;
-            margin: 20px 0 10px;
-        }
-
-        .main p {
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .main ol {
-            margin-left: 20px;
-            margin-bottom: 30px;
-        }
-
-        .main li {
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .required {
-            color: red;
-        }
-
-        input[type="email"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        form {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .form-row {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-row label {
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        .form-row input[type="text"],
-        .form-row input[type="email"],
-        .form-row select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        .radio-group {
-            display: flex;
-            gap: 20px;
-            margin-top: 5px;
-        }
-
-        .radio-option {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        .hero-section {
-            height: 100vh;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .hero-content {
-            color: white;
-            max-width: 800px;
-        }
-
-        .hero-title {
-            font-size: 4em;
-            margin-bottom: 0.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards 0.5s;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5em;
-            margin-bottom: 2em;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards 0.8s;
-        }
-
-        .start-btn {
-            padding: 15px 40px;
-            font-size: 1.2em;
-            background: white;
-            color: #2c3e50;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards 1.1s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .start-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Scroll indicator styles */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-        }
-
-        .scroll-text {
-            color: white;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .scroll-arrow {
-            width: 30px;
-            height: 30px;
-            border: 2px solid white;
-            border-radius: 50%;
-            position: relative;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-arrow::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 8px;
-            height: 8px;
-            border-right: 2px solid white;
-            border-bottom: 2px solid white;
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        /* Hide scroll indicator when user starts scrolling */
-        .scroll-indicator.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* Responsive adjustments */
-        @media screen and (max-width: 768px) {
-            .main {
-                padding: 15px;
-            }
-
-            .form-row {
-                margin-bottom: 15px;
-            }
-
-            input[type="text"],
-            input[type="email"],
-            select {
-                padding: 10px;
-                font-size: 14px;
-            }
-
-            .radio-group {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .radio-option {
-                margin-bottom: 5px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .main h1 {
-                font-size: 24px;
-            }
-
-            .main h2 {
-                font-size: 20px;
-            }
-
-            .main p, .main li {
-                font-size: 14px;
-            }
-
-            .nav-title {
-                font-size: 18px;
-            }
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
 </head>
 
 <body>
@@ -335,7 +18,7 @@
             <h1 class="nav-title">SVU Personality Assessment Test</h1>
         </div>
     </nav>
-    
+
     <div class="hero-section">
         <div class="hero-content">
             <h1 class="hero-title">SVU Personality Assessment Test</h1>
@@ -351,47 +34,53 @@
     <section id="main" class="main">
         <div class="container">
             <h1 class="section-title">Personality Assessment Test</h1>
-            <p class="section-description">The following is a 20 min personality evaluation test that is meant to check your Intelligence Quotient, Emotional Quotient, and Spiritual Quotient.</p>
+            <p class="section-description">The following is a 20 min personality evaluation test that is meant to check
+                your Intelligence Quotient, Emotional Quotient, and Spiritual Quotient.</p>
 
             <h2>Instructions:</h2>
             <ol>
                 <li>Toppers will get Special Gifts.</li>
                 <li>Please carefully give responses. Only one submission is allowed.</li>
-            <li>All questions are compulsory.</li>
-            <li>EQ and SQ comprise 70% of the total score.</li>
-            <li>IQ comprises 30% of the total score.</li>
-        </ol>
+                <li>All questions are compulsory.</li>
+                <li>EQ and SQ comprise 70% of the total score.</li>
+                <li>IQ comprises 30% of the total score.</li>
+            </ol>
 
-            <form name="assessment-form" method="POST" data-netlify="true" action="/mcq.html">
+            <form name="assessment-form" method="POST" data-netlify="true" action="/mcq.html" id="assessment-form">
                 <input type="hidden" name="form-name" value="assessment-form" />
                 <div class="form-row">
                     <label for="name">Name <span class="required">*</span></label>
-                    <input type="text" id="name" name="student_name" placeholder="Enter your name" >
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    <span class="error-message" id="name-error"></span>
                 </div>
 
                 <div class="form-row">
                     <label for="email">Email <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address" >
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    <span class="error-message" id="email-error"></span>
                 </div>
 
                 <div class="form-row">
                     <label for="phone">Phone Number <span class="required">*</span></label>
-                    <input type="text" id="phone" name="phone" placeholder="Enter your Phone number" >
+                    <input type="text" id="phone" name="phone_number" placeholder="Enter your Phone number" required pattern="\d{10}">
+                    <span class="error-message" id="phone-error"></span>
                 </div>
 
                 <div class="form-row">
                     <label for="whatsapp">Whatsapp Number<span class="required">*</span></label>
-                    <input type="text" id="whatsapp" name="whatsapp" placeholder="Enter your Whatsapp number" >
+                    <input type="text" id="whatsapp" name="whatsapp_number" placeholder="Enter your Whatsapp number" required pattern="\d{10}">
+                    <span class="error-message" id="whatsapp-error"></span>
                 </div>
 
                 <div class="form-row">
                     <label for="place">Native Place(Town/Village)<span class="required">*</span></label>
-                    <input type="text" id="place" name="Native Place" placeholder="Enter your Native Place" >
+                    <input type="text" id="place" name="native_place" placeholder="Enter your Native Place" required>
+                    <span class="error-message" id="place-error"></span>
                 </div>
 
                 <div class="form-row">
                     <label for="branch">Branch <span class="required">*</span></label>
-                    <select id="branch" name="branch" >
+                    <select id="branch" name="branch" required>
                         <option value="">- Choose -</option>
                         <option value="CSE">CSE</option>
                         <option value="EEE">EEE</option>
@@ -400,13 +89,14 @@
                         <option value="CHE">CHE</option>
                         <option value="CIV">CIV</option>
                     </select>
+                    <span class="error-message" id="branch-error"></span>
                 </div>
 
                 <div class="form-row">
                     <label>Gender <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" id="male" name="gender" value="male" >
+                            <input type="radio" id="male" name="gender" value="male" required>
                             <label for="male">Male</label>
                         </div>
                         <div class="radio-option">
@@ -414,44 +104,130 @@
                             <label for="female">Female</label>
                         </div>
                     </div>
+                    <span class="error-message" id="gender-error"></span>
                 </div>
 
                 <div class="form-row">
                     <label>Hostel / Day Scholar <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" id="hostel" name="accommodation" value="hostel" >
+                            <input type="radio" id="hostel" name="hostel_or_day_scholar" value="hostel" required>
                             <label for="hostel">Hostel</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" id="dayScholar" name="accommodation" value="dayScholar">
+                            <input type="radio" id="dayScholar" name="hostel_or_day_scholar" value="day_scholar">
                             <label for="dayScholar">Day Scholar</label>
                         </div>
                     </div>
+                    <span class="error-message" id="hostel-error"></span>
                 </div>
 
-                <button type="submit" class="nav-btn">Next</button>
+                <button type="submit" class="nav-btn">Start</button>
             </form>
         </div>
     </section>
 
     <script>
-        // Form submission handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
+        // Form validation
+        document.getElementById('assessment-form').addEventListener('submit', function (e) {
+            let valid = true;
+
+            // Name
+            const name = document.getElementById('name');
+            const nameError = document.getElementById('name-error');
+            if (!name.value.trim()) {
+                nameError.textContent = 'Name is required.';
+                valid = false;
+            } else {
+                nameError.textContent = '';
+            }
+
+            // Email
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim()) {
+                emailError.textContent = 'Email is required.';
+                valid = false;
+            } else if (!emailPattern.test(email.value.trim())) {
+                emailError.textContent = 'Enter a valid email address.';
+                valid = false;
+            } else {
+                emailError.textContent = '';
+            }
+
+            // Phone
+            const phone = document.getElementById('phone');
+            const phoneError = document.getElementById('phone-error');
+            if (!/^\d{10}$/.test(phone.value.trim())) {
+                phoneError.textContent = 'Enter a valid 10-digit phone number.';
+                valid = false;
+            } else {
+                phoneError.textContent = '';
+            }
+
+            // Whatsapp
+            const whatsapp = document.getElementById('whatsapp');
+            const whatsappError = document.getElementById('whatsapp-error');
+            if (!/^\d{10}$/.test(whatsapp.value.trim())) {
+                whatsappError.textContent = 'Enter a valid 10-digit WhatsApp number.';
+                valid = false;
+            } else {
+                whatsappError.textContent = '';
+            }
+
+            // Native Place
+            const place = document.getElementById('place');
+            const placeError = document.getElementById('place-error');
+            if (!place.value.trim()) {
+                placeError.textContent = 'Native place is required.';
+                valid = false;
+            } else {
+                placeError.textContent = '';
+            }
+
+            // Branch
+            const branch = document.getElementById('branch');
+            const branchError = document.getElementById('branch-error');
+            if (!branch.value) {
+                branchError.textContent = 'Please select your branch.';
+                valid = false;
+            } else {
+                branchError.textContent = '';
+            }
+
+            // Gender
+            const genderError = document.getElementById('gender-error');
+            if (!document.querySelector('input[name="gender"]:checked')) {
+                genderError.textContent = 'Please select your gender.';
+                valid = false;
+            } else {
+                genderError.textContent = '';
+            }
+
+            // Hostel/Day Scholar
+            const hostelError = document.getElementById('hostel-error');
+            if (!document.querySelector('input[name="hostel_or_day_scholar"]:checked')) {
+                hostelError.textContent = 'Please select Hostel or Day Scholar.';
+                valid = false;
+            } else {
+                hostelError.textContent = '';
+            }
+
+            if (!valid) {
+                e.preventDefault();
+                return;
+            }
+
+            // If valid, store form data and redirect
             const form = e.target;
-            fetch('/', {
-                method: 'POST',
-                body: new FormData(form)
-            })
-            .then(() => {
-                window.location.href = '/mcq.html';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting the form. Please try again.');
-            });
+            const formData = new FormData(form);
+            const formDataObj = {};
+            for (const [key, value] of formData.entries()) {
+                formDataObj[key] = value;
+            }
+            sessionStorage.setItem('personalData', JSON.stringify(formDataObj));
+            window.location.href = '/mcq.html';
         });
 
         // Smooth scroll
@@ -464,27 +240,27 @@
             });
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const scrollIndicator = document.querySelector('.scroll-indicator');
-            
+
             // Click handler for scroll indicator
-            scrollIndicator.addEventListener('click', function() {
+            scrollIndicator.addEventListener('click', function () {
                 const mainSection = document.querySelector('#main');
                 mainSection.scrollIntoView({ behavior: 'smooth' });
             });
 
             // Hide scroll indicator when user scrolls
             let scrollTimeout;
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 if (window.scrollY > 100) {
                     scrollIndicator.classList.add('hidden');
                 } else {
                     scrollIndicator.classList.remove('hidden');
                 }
-                
+
                 // Show scroll indicator when user stops scrolling
                 clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(function() {
+                scrollTimeout = setTimeout(function () {
                     if (window.scrollY < 100) {
                         scrollIndicator.classList.remove('hidden');
                     }
