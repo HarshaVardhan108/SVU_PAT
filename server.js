@@ -1,9 +1,16 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const { saveSubmission, getAllSubmissions, getSubmissionById } = require('./db');
 
 const app = express();
+
+// Enable CORS for frontend onrender domain
+app.use(cors({
+  origin: 'https://svu-pat.onrender.com',
+  credentials: true
+}));
 const port = 3000;
 
 // Middleware

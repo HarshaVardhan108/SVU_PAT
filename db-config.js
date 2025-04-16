@@ -1,8 +1,15 @@
-// Database configuration
-module.exports = {
+// Database configuration for local and Render
+require('dotenv').config();
+
+const isRender = !!process.env.DATABASE_URL;
+
+module.exports = isRender ? {
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+} : {
   host: 'localhost',
   port: 5432,
   database: 'svu_pat_db',
-  user: 'postgres',     // Change this to your PostgreSQL username
-  password: 'hemanga', // Change this to your PostgreSQL password
+  user: 'postgres',
+  password: 'hemanga',
 };
