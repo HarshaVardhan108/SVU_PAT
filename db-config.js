@@ -9,7 +9,7 @@ module.exports = isRender ? {
 } : {
   host: 'localhost',
   port: 5432,
-  database: 'svu_pat_db',
+  database: 'svu_pat',
   user: 'postgres',
-  password: 'hemanga',
+  password: 'KEtMHmOZF6IIdqOojGM0SXZeCaID2VzE',
 };
